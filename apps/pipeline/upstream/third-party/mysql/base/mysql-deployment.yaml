@@ -53,6 +53,9 @@ spec:
         ports:
         - containerPort: 3306
           name: mysql
+        securityContext:
+          runAsUser: 65534 # user nobody on nfs-server
+          runAsGroup: 65534 # group nogroup on nfs-server
         volumeMounts:
         - mountPath: /var/lib/mysql
           name: mysql-persistent-storage
