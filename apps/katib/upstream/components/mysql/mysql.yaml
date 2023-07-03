@@ -39,6 +39,9 @@ spec:
           ports:
             - name: dbapi
               containerPort: 3306
+          securityContext:
+            runAsUser: 999 # user mysql, you need to `chown -R 999:999` the corresponding pv on the nfs-server for this to work
+            runAsGroup: 999 # group mysql, you need to `chown -R 999:999` the corresponding pv on the nfs-server for this to work
           readinessProbe:
             exec:
               command:
